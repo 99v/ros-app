@@ -7,10 +7,8 @@ def callback(data):
         rospy.logerr("%s", data.data)
         print("Error: " + data.data, file=open('logfile.txt', 'a'))
     else:
-        #rospy.loginfo("%s", data.data)
         rospy.loginfo("%s", data.data)
         print("Info: " + data.data, file=open('logfile.txt', 'a'))
-        #rospy.loginfo(rospy.get_caller_id() + ": %s", data.data)
 
 def listener():
     rospy.init_node('listener', anonymous=True)

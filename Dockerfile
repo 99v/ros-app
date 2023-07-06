@@ -10,23 +10,19 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-vcstools \
     && rm -rf /var/lib/apt/lists/*
 
+#========== pip, venv, flask
 SHELL ["/bin/bash", "-c"] 
-#==========
 RUN apt-get update \
- && apt-get install --assume-yes --no-install-recommends --quiet \
+    && apt-get install --assume-yes --no-install-recommends --quiet \
         software-properties-common \
- && add-apt-repository universe \
- && apt-get update \
- && apt-get install --assume-yes --no-install-recommends --quiet \
-        python3 \
-        python3-pip \
-        python3-venv \
- && apt-get clean all
+    && add-apt-repository universe \
+    && apt-get install --assume-yes --no-install-recommends --quiet \
+    python3 \
+    python3-pip \
+    python3-venv \
+    && apt-get clean all
 
 RUN pip install --no-cache --upgrade pip setuptools
-
-
-#RUN pip install -r requirements.txt
 
 WORKDIR /app
 COPY . /app
@@ -36,11 +32,6 @@ RUN source venv/bin/activate
 RUN pip3 install Flask 
 
 EXPOSE 5000
-#CMD python3 ./index.py
-#CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
-
-
-
 #==========
 
 # bootstrap rosdep
