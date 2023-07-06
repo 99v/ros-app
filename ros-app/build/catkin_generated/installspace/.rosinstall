@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /app/install/setup.sh
